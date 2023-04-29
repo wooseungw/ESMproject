@@ -1,0 +1,15 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<jsp:include page="home.jsp" />
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% endblock %}
