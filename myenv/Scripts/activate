@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Workspace\ESMproject\myenv"
+VIRTUAL_ENV="C:\Users\껄러뇽\source\repos\소프트웨어응용\그 외\학술제\ESMproject\myenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

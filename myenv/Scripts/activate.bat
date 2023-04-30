@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Workspace\ESMproject\myenv
+set VIRTUAL_ENV=C:\Users\껄러뇽\source\repos\소프트웨어응용\그 외\학술제\ESMproject\myenv
 
 if not defined PROMPT set PROMPT=$P$G
 
