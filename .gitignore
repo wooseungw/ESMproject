@@ -1,0 +1,6 @@
+myenv/
+__pycache__/
+home/__pycache__/
+ESM/__pycache__/
+home/migrations/__pycache__/
+myenv/pyvenv.cfg
