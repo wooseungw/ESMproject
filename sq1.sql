@@ -24,17 +24,21 @@ CREATE TABLE tinput (
 CREATE TABLE tsummary (
 
  s_id        	INT NOT NULL AUTO_INCREMENT,
+ i_id         INT NOT NULL,
  su_impwords	text,
  su_contents    MEDIUMTEXT not null,
  
  
-  PRIMARY KEY(s_id)
+  PRIMARY KEY(s_id),
+  FOREIGN KEY (i_id) REFERENCES tinput (i_id)
+
 ) ENGINE=InnoDB CHARSET=utf8;
 
 CREATE TABLE textent (
 
  e_id        	INT NOT NULL AUTO_INCREMENT,
- 
+ i_id         INT NOT NULL,
+ FOREIGN KEY (i_id) REFERENCES tinput (i_id),
  ex_contents    LONGTEXT not null,
  
  
@@ -44,6 +48,8 @@ CREATE TABLE textent (
 CREATE TABLE tword (
 
  w_id        	INT NOT NULL AUTO_INCREMENT,
+ i_id         INT NOT NULL,
+ FOREIGN KEY (i_id) REFERENCES tinput (i_id),
  w_name			text not null,
  w_contents   	MEDIUMTEXT not null,
  
