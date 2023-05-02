@@ -7,3 +7,7 @@ def home(requeset):
 
 def summary(requeset):
     return render(requeset, 'summary.html')
+
+
+def login(requeset):
+    return render(requeset, 'login.html')

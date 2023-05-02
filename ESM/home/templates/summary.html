@@ -12,7 +12,7 @@
     <link rel="canonical" href="https://getbootstrap.kr/docs/5.1/examples/sticky-footer-navbar/">
 
     
-
+  
     <!-- Bootstrap core CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -42,17 +42,22 @@
       }
 
       .sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  padding: 3rem 1.5rem;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background-color: #f8f9fa;
-  border-right: 1px solid #dee2e6;
-}
+     position: fixed;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     z-index: 100;
+     padding: 3rem 1.5rem;
+     overflow-x: hidden;
+     overflow-y: auto;
+     background-color: #f8f9fa;
+     border-right: 1px solid #dee2e6;
+    }
+
+    .flex-shrink-0{
+      margin: 10px 20px 30px 220px;
+    }
+
 
 @media (min-width: 768px) {
   .sidebar {
@@ -83,10 +88,10 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Log</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
+            <a class="nav-link disabled">Community</a>
           </li>
         </ul>
         <form class="d-flex">
@@ -118,31 +123,31 @@
       <li class="nav-item">
         <a href="#" class="nav-link active" aria-current="page">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-          Home
+          추가설명
         </a>
       </li>
       <li>
         <a href="#" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-          Dashboard
+          요약
         </a>
       </li>
       <li>
         <a href="#" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-          Orders
+          단어
         </a>
       </li>
       <li>
         <a href="#" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-          Products
+          단어
         </a>
       </li>
       <li>
         <a href="#" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-          Customers
+          원문
         </a>
       </li>
     </ul>

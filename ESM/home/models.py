@@ -12,10 +12,9 @@ class TUser(models.Model):
 class TInput(models.Model):
     i_id        = models.IntegerField(primary_key=True)
     us          = models.ForeignKey(TUser, on_delete=models.CASCADE)
-    in_fname    = models.CharField(max_length=30)
+    in_fname    = models.CharField(max_length=40)
     in_ftype    = models.CharField(max_length=4)
     in_contents = models.TextField()
-    in_words    = models.TextField()
     in_date     = models.DateField()
     class Meta:
         db_table = "tinput"
