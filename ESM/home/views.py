@@ -1,9 +1,0 @@
-from django.shortcuts import render
-
-# Create your views here.
-def home(requeset):
-    return render(requeset, 'home.html')
-
-
-def summary(requeset):
-    return render(requeset, 'summary.html')
