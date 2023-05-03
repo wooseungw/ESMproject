@@ -11,3 +11,7 @@ def summary(requeset):
 
 def login(requeset):
     return render(requeset, 'login.html')
+
+
+def community(requeset):
+    return render(requeset, 'community.html')
