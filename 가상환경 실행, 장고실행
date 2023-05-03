@@ -1,4 +1,4 @@
-가상환경 실행 cd EMSproject
+가상환경 실행 cd ESMproject
 CMD나 git bash에서 myenv\Scripts\activate
 
 장고실행: python manage.py runserver
