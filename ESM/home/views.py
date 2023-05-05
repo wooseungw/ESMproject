@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import TUser
 
+def register(request):
+    
+    
+    return render(request, 'register.html')
+
 
 # Create your views here.
 def home(request):
@@ -18,7 +23,7 @@ def summary(request):
 def login(request):
      if request.method == 'POST':
         user = TUser()
-        user.us_id = request.POST['id']
+        user.us_username = request.POST['id']
         user.us_pw = request.POST['pwd']
         user.save()
         return redirect('/')
