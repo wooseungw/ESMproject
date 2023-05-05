@@ -3,11 +3,13 @@ from django.db import models
 # Create your models here.
 
 class TUser(models.Model):
-    us_id   = models.CharField(max_length=20)
-    us_pw   = models.CharField(max_length=20)
+    us_username = models.CharField(max_length=64)
+    us_pw = models.CharField(max_length=128)
     us_api  = models.CharField(max_length=64)
     class Meta:
         db_table = "tuser"
+        
+        
     
 class TInput(models.Model):
     i_id        = models.IntegerField(primary_key=True)
