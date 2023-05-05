@@ -15,3 +15,7 @@ def login(requeset):
 
 def community(requeset):
     return render(requeset, 'community.html')
+
+
+def myhome(requeset):
+    return render(requeset, 'myhome.html')
