@@ -2,3 +2,16 @@
 CMD나 git bash에서 myenv\Scripts\activate
 
 장고실행: python manage.py runserver
+
+가상환경 실행 cd EMSproject
+CMD나 git bash에서 myenv\Scripts\activate
+
+장고실행: python manage.py runserver
+
+가상환경이 날아갔을때 
+python -m venv myenv
+python.exe -m pip install --upgrade pip
+pip install pymysql
+pip install djangorestframework
+pip install Django
+pip install openai
