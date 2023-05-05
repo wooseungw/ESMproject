@@ -1,18 +1,14 @@
 from django.shortcuts import render, redirect
 from .models import TUser
-
+from django.http import HttpResponse
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect# 홈으로 이동하기 위해 redirect 추가로 적어준다
 
 # Create your views here.
 def home(request):
     
-    if request.method  == 'post':
-        user = TUser()
-        user.us_id = request.post['id']
-        user.us_pw = request.post['pwd']
-        user.save()
-        
-        
-    return redirect(request, 'home.html')
+        return render(request, 'home.html')
+
 
 
 def summary(request):
@@ -20,11 +16,17 @@ def summary(request):
 
 
 def login(request):
-    
-        
-        
-    return render(request, 'login.html')
+    if request.method == 'POST':
+        username = request.POST['id']
+        password = request.POST['pwd']
+        # user = authenticate(request, username=TUser.us_id, password=TUser.us_pw)
 
+        # if user is not None:
+        #     login(request, user)
+        return redirect('/')  # 루트 위치로 리다이렉트합니다.
+        
+    else:
+        return render(request, 'login.html')
 
 def community(request):
     return render(request, 'community.html')
