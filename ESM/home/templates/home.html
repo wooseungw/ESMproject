@@ -93,10 +93,12 @@
     
 <main>
   <div class="container py-4">
+    <form action="." method="POST">
+      {% csrf_token %}
     <header class="pb-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-        <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><img src="https://postfiles.pstatic.net/MjAyMzA1MDFfMTY5/MDAxNjgyOTI4ODIzNjM3.7igLrEn-IkXA3yd4TyLinnO7Jz9QOK9Fj1lBEdYVqW8g.oeZlbrR3zqAzmwjpRAG5LZ8X9F3jchLP78hm8CsFpicg.PNG.hat1006/free-icon-plant-5995756.png?type=w580" width="30" alt="사진"><pre> </pre></i></svg>
-        <span class="fs-4">Summary and Descript</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><img src="https://postfiles.pstatic.net/MjAyMzA1MDZfNDUg/MDAxNjgzMzAwNDE0NDkz.uX2Ovmfpcz05A1HHGosh3-KP_DrOtDZixltCPp9Rfdcg.Div-bvHgJrfK-aqo9rZvW8nDvQN0-Ce27JoTe-G7f7Ug.PNG.hat1006/free-icon-frog-4590553.png?type=w580" width="30" alt="사진"><pre> </pre></i></svg>
+        <span class="fs-4">P-log</span>
       </a>
     </header>
 
@@ -117,7 +119,7 @@
 </div>
         <div class="find-btn">
         <br>
-         <button class="text-center btn btn-primary btn-lg" type="button">Let's Study</button>
+         <button class="text-center btn btn-primary btn-lg" type="submit">Let's Study</button>
         </div>
         
       </div>
@@ -126,8 +128,8 @@
     <div class="row align-items-md-stretch">
       <div class="col-md-6">
         <div class="h-100 p-5 text-white bg-dark rounded-3">
-          <h2>My log</h2>
-          <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more.</p>
+          <h2>My P-log</h2>
+          <p>어떤 것들을 공부했나요?<br>나의 P-log를 살펴보아요!</p>
           <button class="btn btn-outline-light" type="button">more</button>
         </div>
       </div>
@@ -141,7 +143,7 @@
     </div>
 
     <footer class="pt-3 mt-4 text-muted border-top">
-      &copy; 2022
+      &copy; 2023
     </footer>
   </div>
 </main>
