@@ -2,9 +2,14 @@ from django.shortcuts import render, redirect
 from .models import TUser
 
 def register(request):
-    
-    
-    return render(request, 'register.html')
+     if request.method == 'POST':
+        user = TUser()
+        user.us_username = request.POST['id']
+        user.us_pw = request.POST['pwd']
+        user.save()
+        return redirect('/') 
+     else:
+        return render(request, 'register.html')
 
 
 # Create your views here.
@@ -29,10 +34,6 @@ def login(request):
         return redirect('/')
      else:
         return render(request, 'login.html')
-
-
-def community(request):
-    return render(request, 'community.html')
 
 
 def myhome(request):
