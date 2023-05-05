@@ -31,5 +31,8 @@ def community(request):
 
 
 def myhome(request):
-    return render(request, 'myhome.html')
+     if request.method == 'POST':
+        return redirect('/myhome')
+     else:
+         return render(request, 'myhome.html')
 
