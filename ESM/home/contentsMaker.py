@@ -5,7 +5,7 @@ import openai
 import json
 
 #openai.organization = "org-RW97zLho4qp0kezjTGL3HLRb"
-mykey = "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"
+mykey = "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"
 openai.api_key = f"{mykey}"
 
 def response(message_list):

@@ -1,21 +1,35 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import TUser
+
 
 # Create your views here.
-def home(requeset):
-    return render(requeset, 'home.html')
+def home(request):
+    
+    if request.method  == 'post':
+        user = TUser()
+        user.us_id = request.post['id']
+        user.us_pw = request.post['pwd']
+        user.save()
+        
+        
+    return redirect(request, 'home.html')
 
 
-def summary(requeset):
-    return render(requeset, 'summary.html')
+def summary(request):
+    return render(request, 'summary.html')
 
 
-def login(requeset):
-    return render(requeset, 'login.html')
+def login(request):
+    
+        
+        
+    return render(request, 'login.html')
 
 
-def community(requeset):
-    return render(requeset, 'community.html')
+def community(request):
+    return render(request, 'community.html')
 
 
-def myhome(requeset):
-    return render(requeset, 'myhome.html')
+def myhome(request):
+    return render(request, 'myhome.html')
+

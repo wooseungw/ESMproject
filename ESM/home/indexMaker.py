@@ -3,9 +3,10 @@ import sys
 import os
 import openai
 import json
+#from home.models import TInput, TContnets
 
 #openai.organization = "org-RW97zLho4qp0kezjTGL3HLRb"
-mykey = "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"
+mykey = "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"
 openai.api_key = f"{mykey}"
 
 def response(message_list):
@@ -22,22 +23,22 @@ message_list = [
     
 ]
 
-
+indexs =  response(message_list)
 
 #주제 입력, 프롬프트 입력, 인덱스 받기,목차수정
 
-while(True):
-    print("입력")
-    user = sys.stdin.readlines()
-    if(user == "0"):
-        break
-    message_list.append({"role": "user", "content": f"{user}"})
-    indexs =  response(message_list)
-    message_list.append({"role": "assistant", "content":f"{indexs}\n\n수정할 부분이 있다면 고쳐주시거나 어떤 부분을 추가할지 알려주세요. 수정할 부분이 없다면 0을 입력해주세요."})
-    print(indexs)
+
+print("입력")
+user = sys.stdin.readline()
+
+
+message_list.append({"role": "user", "content": f"{user}"})
+indexs =  response(message_list)
+message_list.append({"role": "assistant", "content":f"{indexs}\n\n수정할 부분이 있다면 고쳐주시거나 어떤 부분을 추가할지 알려주세요. 수정할 부분이 없다면 0을 입력해주세요."})
+print(indexs)
 
     
-
+global user_post_num 
 result = indexs
 
 

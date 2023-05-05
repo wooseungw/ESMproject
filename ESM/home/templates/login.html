@@ -54,7 +54,8 @@
 
 <body class="text-center">
    <main class="form-signin">
-      <form action="login.jsp" method="post">
+      <form action="{% url 'home' %}" method="post">
+         {% csrf_token %}
          <img class="mb-4" src="https://postfiles.pstatic.net/MjAyMzA1MDFfMTY5/MDAxNjgyOTI4ODIzNjM3.7igLrEn-IkXA3yd4TyLinnO7Jz9QOK9Fj1lBEdYVqW8g.oeZlbrR3zqAzmwjpRAG5LZ8X9F3jchLP78hm8CsFpicg.PNG.hat1006/free-icon-plant-5995756.png?type=w580" alt="" width="72" height="57">
          <h1 class="h3 mb-3 fw-normal">로그인 페이지</h1>
          
