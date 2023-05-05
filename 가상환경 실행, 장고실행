@@ -15,3 +15,5 @@ pip install pymysql
 pip install djangorestframework
 pip install Django
 pip install openai
+pip install PyPDF2
+pip install bootstrap4

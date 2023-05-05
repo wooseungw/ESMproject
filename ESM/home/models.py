@@ -19,30 +19,16 @@ class TInput(models.Model):
     class Meta:
         db_table = "tinput"
     
-class TSummary(models.Model):
-    s_id        = models.IntegerField(primary_key=True)
+class TContnets(models.Model):
+    c_id        = models.IntegerField(primary_key=True)
     i           = models.ForeignKey(TInput, on_delete=models.CASCADE)
     # in_contents = models.ForeignObject(TInput, on_delete=models.CASCADE,from_fields=['in_contents'],to_fields=['in_contents'])
-    su_impwords = models.TextField()
-    su_contents = models.TextField()
+    co_indexs = models.TextField()
+    co_contents = models.TextField()
+    co_ketwords = models.TextField()
     class Meta:
-        db_table = "tsummary"
+        db_table = "tcontnets"
     
-class TExtent(models.Model):
-    e_id        = models.IntegerField(primary_key=True)
-    i           = models.ForeignKey(TInput, on_delete=models.CASCADE)
-    ex_contents = models.TextField()
-    class Meta:
-        db_table = "textent"
-    
-    
-class TWord(models.Model):
-    w_id        = models.IntegerField(primary_key=True)
-    i           = models.ForeignKey(TInput, on_delete=models.CASCADE)
-    w_name      = models.TextField()
-    w_contents  = models.TextField()
-    class Meta:
-            db_table = "tword"
     
     
 
