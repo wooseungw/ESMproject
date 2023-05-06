@@ -19,6 +19,7 @@ def register(request):
 # Create your views here.
 def home(request):
      if request.method == 'POST':
+         
         return redirect('/summary')
      else:
          return render(request, 'home.html')
