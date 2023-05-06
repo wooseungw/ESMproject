@@ -5,7 +5,7 @@ import openai
 import json
 
 #openai.organization = "org-RW97zLho4qp0kezjTGL3HLRb"
-mykey = "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"
+mykey = "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"
 openai.api_key = f"{mykey}"
 
 def response(message_list):
@@ -16,7 +16,7 @@ def response(message_list):
 
 message_list = [
     {"role": "system",
-     "content":"너는 입력된 목차를 바탕으로 인기있는 블로거처럼 글을써줘. ———————말투는 따듯하게해줬으면 좋겠어. 제목은 목차들의 주제를 관통하는 깔끔한 제목 목차별로 자세한 설명과 예제가 들어가면 좋겠다. 설명은 사실에 기반해야해. 결론은 본문내용을 요약하고 학습 방향성을 제시해주면 좋겠어. 글쓰기 방식:각 챕터별로 짜임새있는 글쓰기, 글작성이 마무리 된 후 퇴고작업으로 글 완성도 높히기———— 반드시 이 형태와 요청을 기억해줘."}
+     "content":"너는 입력된 목차를 바탕으로 인기있는 블로거처럼 글을써줘. ———————말투는 따듯하게해줬으면 좋겠어. 제목은 주제를 관통하는 깔끔한 제목, 서론은 주제에 흥미를 돋구는 서론을 작성해줘. 목차별로 자세한 설명과 예제가 들어가면 좋겠다. 설명은 사실에 기반해야해. 결론은 본문내용을 요약하고 학습 방향성을 제시해주면 좋겠어. 글쓰기 방식:각 챕터별로 짜임새있는 글쓰기, 글작성이 마무리 된 후 퇴고작업으로 글 완성도 높히기———— 반드시 이 형태와 요청을 기억해줘."}
      
     
     
