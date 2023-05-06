@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import TUser
+from .models import TUser, TInput
 from django.contrib import messages
+from django.core.files.storage import FileSystemStorage
 
 def register(request):
     if request.method == 'POST':
@@ -18,11 +19,14 @@ def register(request):
 
 # Create your views here.
 def home(request):
-     if request.method == 'POST':
-         
-        return redirect('/summary')
-     else:
-         return render(request, 'home.html')
+    if request.method == 'POST' and request.FILES.get('file'):
+        file = request.FILES.get('file')
+        fs = FileSystemStorage()
+        filename = fs.save(file.name, file)
+        file_url = fs.url(filename)
+        return render(request, 'summary.html', {'file_url': file_url})
+    
+    return render(request, 'home.html')
 
 
 def summary(request):
@@ -36,9 +40,11 @@ def login(request):
         password = request.POST.get('pwd')
         
         try:
-            user = TUser.objects.get(us_username=username, us_pw=password)
+            user = TUser.objects.filter(us_username=username, us_pw=password)
+            if len(user) > 0:
             # 로그인 성공 시 다른 페이지로 이동
-            return redirect('/')
+                return redirect('/')
+            
         except TUser.DoesNotExist:
             # 로그인 실패 시 에러 메시지와 함께 로그인 페이지 보여줌
             messages.error(request, '아이디 또는 비밀번호가 올바르지 않습니다.')

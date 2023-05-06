@@ -93,8 +93,7 @@
     
 <main>
   <div class="container py-4">
-    <form action="." method="POST">
-      {% csrf_token %}
+    
     <header class="pb-3 mb-4 border-bottom container-fluid">
   <div a href="/" class="d-flex align-items-center text-dark text-decoration-none">
     <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><img src="https://postfiles.pstatic.net/MjAyMzA1MDZfNDUg/MDAxNjgzMzAwNDE0NDkz.uX2Ovmfpcz05A1HHGosh3-KP_DrOtDZixltCPp9Rfdcg.Div-bvHgJrfK-aqo9rZvW8nDvQN0-Ce27JoTe-G7f7Ug.PNG.hat1006/free-icon-frog-4590553.png?type=w580" width="30" alt="사진"><pre> </pre></i></svg>
@@ -116,24 +115,23 @@
 
     <div class="p-5 mb-4 bg-light rounded-3">
       <div class="container-fluid py-5">
-      	<form>
-      	<div class="drop-zone">
-           <h1 class="text-center fw-bold">Drop file here</h1>
-        </div>
-        <p class="text-center col fs-4">Hello world, choose your file</p>
-       
-        <div class="filebox">
-    <input class="upload-name" value="첨부파일" placeholder="첨부파일">
-    <label for="file">파일찾기</label> 
-    <input type="file" id="file">
-
-    
-</div>
-        <div class="find-btn">
-        <br>
-         <button class="text-center btn btn-primary btn-lg" type="submit">Let's Study</button>
-        </div>
-        
+      	<form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="drop-zone">
+              <h1 class="text-center fw-bold">Drop file here</h1>
+          </div>
+          <p class="text-center col fs-4">Hello world, choose your file</p>
+         
+          <div class="filebox">
+              <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+              <label for="file">파일찾기</label> 
+              <input type="file" id="file" name="file">
+          </div>
+          <div class="find-btn">
+              <br>
+              <button class="text-center btn btn-primary btn-lg" type="submit">Let's Study</button>
+          </div>
+      </form>
       </div>
     </div>
 
@@ -151,6 +149,7 @@
           <p>다른 학습자들의 학습 로그를 만나보세요!</p>
           <a href="/myhome" class="btn btn-outline-secondary">more</a>
         </div>
+      </form>
       </div>
     </div>
 
