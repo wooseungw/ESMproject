@@ -25,4 +25,5 @@ urlpatterns = [
     path('myhome/', include('home.urls')),
     path('register/', include('home.urls')),
     
+    
 ]
