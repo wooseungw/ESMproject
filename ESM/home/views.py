@@ -50,9 +50,13 @@ def home(request):
 
 
 def summary(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        contents = request.POST.get('contents')
+        
+        data = data = {'title':title,'contents':contents}
+        return render(request,'view.html',{'data':data})
     if request.method == 'GET':
-        
-        
         
         return render(request, 'summary.html') 
 
@@ -86,3 +90,7 @@ def myhome(request):
      else:
          return render(request, 'myhome.html')
 
+def view(request):
+    
+    
+    return render(request,'view.html')

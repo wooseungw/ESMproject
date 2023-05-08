@@ -24,6 +24,7 @@ urlpatterns = [
     path('login/', include('home.urls')),
     path('myhome/', include('home.urls')),
     path('register/', include('home.urls')),
+    path('view/',include('home.urls'))
     
     
 ]

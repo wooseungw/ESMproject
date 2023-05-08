@@ -10,7 +10,7 @@ from django.core.cache import cache
 
 
 #openai.organization = "org-RW97zLho4qp0kezjTGL3HLRb"
-mykey = "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"
+mykey = ""
 openai.api_key = f"{mykey}"
 
 
@@ -52,8 +52,9 @@ class contentsMaker:
         message_list = []    
         input_list = contentsMaker.txttolist()   
         
-        #프롬프트 추가
-        message_list.append({"role": "system",
+        #index 생성 프롬프트 추가
+        message_list.append(
+            {"role": "system",
             "content": f"어떤 글들이 입력될꺼야 이 글들을 잘 읽어보고 '목차를 출력해줘'라고 하면 목차를 출력해줘. 관련된 지식을 쉽게 습득할수 있도록 도와주는 목차를 작성해줘.-예시- 주제: 자바작동원리 목차가 될수 있는것들: 자바가 어떻게 작동하는지와 관련된 개념인 힙 메모리, 참조에 의한 호출, 모듈, 클래스,등등과 실제작동을 알 수 있는 예제, 작동원리의 장점, 작동원리의 단점, 작동 방식의 최상의 시나리오, 작동방식의 최악의 시나리오, 빈번하게 일어아는 시나리오, 등등.출력 형식: [서론]\n\n[Chapter.1]\n-소목차1\n-소목차2\n소목차3\n\n[Chapter.2]\n-소목차1\n-소목차2\n\n[Chapter.3]\n-소목차1\n-소목차2\n\n-결론.\n\n———— 다음 입력에 주제가 입력될꺼야. 알겠다면 '주제 및 내용을 입력해주세요!'라고 출력해줘."})
         
         #메세지 리스트가 비어있을때 까지 출력 일단 하나만 받기
@@ -85,9 +86,10 @@ class contentsMaker:
     def contents(indexs):
         
         contents_list = []
+        #콘텐츠 생성 프롬프트
         message_list = [
             {"role": "system",
-            "content":f"목차정보가 입력될꺼야. 목차정보를 천천히 분석하고, 블로그 글을 작성해줘.목차별 내용을 적어도 3줄이상의 문장이어야해. 설명할때 예제를 같이 사용하면 더 좋을거같아. 입력 예)2. 머신러닝과 딥러닝 기술의 원리와 활용\n- 머신러닝 기초 개념과 알고리즘\n- 신경망과 딥러닝의 원리와 활용\n- 딥러닝을 활용한 이미지 인식, 자연어 처리 등 다양한 분야 적용 사례   출력 예)[Chapter.1]머신러닝과 딥러닝 기술의 원리와 활용\n\n-머신러닝 기초 개념과 알고리즘\n(머신러닝은 인공지능의 한 분야로, 컴퓨터가 데이터를 통해 학습하고 예측, 분류, 군집화 등의 작업을 수행할 수 있도록 하는 알고리즘과 기술들을 연구하는 분야입니다. 머신러닝의 목표는 명시적인 프로그래밍 없이 컴퓨터가 데이터로부터 패턴을 학습하고 일반화하여 새로운 데이터에 대한 의사결정을 내릴 수 있게 하는 것입니다.\n머신러닝에는 여러 가지 기초 개념과 알고리즘이 있습니다:\n지도 학습(Supervised Learning): 입력 데이터와 그에 상응하는 정답 레이블이 주어지고, 알고리즘이 이를 학습하여 새로운 데이터에 대한 예측을 수행합니다. 지도 학습의 대표적인 알고리즘으로는 선형 회귀(Linear Regression), 로지스틱 회귀(Logistic Regression), 서포트 벡터 머신(SVM), 결정 트리(Decision Tree) 등이 있습니다.\n비지도 학습(Unsupervised Learning): 입력 데이터만 주어지고 정답 레이블이 없는 상태에서 패턴이나 구조를 찾는 학습 방법입니다. 비지도 학습의 대표적인 알고리즘으로는 클러스터링(Clustering), 주성분 분석(PCA), 자동 인코더(Autoencoder) 등이 있습니다.\n강화 학습(Reinforcement Learning): 에이전트가 환경과 상호 작용하며 보상을 최대화하는 행동을 학습하는 방법입니다. 강화 학습은 마르코프 결정 과정(MDP)과 Q-러닝(Q-Learning), 딥 Q-네트워크(Deep Q-Network, DQN) 등의 개념과 알고리즘을 사용합니다.\n딥러닝(Deep Learning): 머신러닝의 한 분야로, 인공 신경망(Artificial Neural Networks, ANN)을 기반으로 복잡한 패턴을 학습할 수 있는 알고리즘입니다. CNN(Convolutional Neural Networks), RNN(Recurrent Neural Networks), LSTM(Long Short-Term Memory), GAN(Generative Adversarial Networks) 등 다양한 구조와 알고리즘이 존재합니다.)\n\n-신경망과 딥러닝의 원리와 활용\n(내용)\n\n- 딥러닝을 활용한 이미지 인식, 자연어 처리 등 다양한 분야 적용 사례\n(내용) 글쓰기 방식:한 문단은 '\n\n'로 구분, 각 챕터별로 짜임새있는 글쓰기, 글작성이 마무리 된 후 퇴고작업으로 글 완성도 높히기 내외 사용.———— 반드시 이 형태와 요청을 기억해줘."}    ]
+            "content":f"목차정보가 입력될꺼야. 목차정보를 천천히 분석하고, 블로그 글을 작성해줘.목차별 내용을 적어도 3줄이상의 문장이어야해. 설명할때 예제를 같이 사용하면 더 좋을거같아. 입력 예)2. 머신러닝과 딥러닝 기술의 원리와 활용\n- 머신러닝 기초 개념과 알고리즘\n- 신경망과 딥러닝의 원리와 활용\n- 딥러닝을 활용한 이미지 인식, 자연어 처리 등 다양한 분야 적용 사례-----출력 예)[Chapter.1]머신러닝과 딥러닝 기술의 원리와 활용\n\n-머신러닝 기초 개념과 알고리즘\n(머신러닝은 인공지능의 한 분야로, 컴퓨터가 데이터를 통해 학습하고 예측, 분류, 군집화 등의 작업을 수행할 수 있도록 하는 알고리즘과 기술들을 연구하는 분야입니다. 머신러닝의 목표는 명시적인 프로그래밍 없이 컴퓨터가 데이터로부터 패턴을 학습하고 일반화하여 새로운 데이터에 대한 의사결정을 내릴 수 있게 하는 것입니다.\n머신러닝에는 여러 가지 기초 개념과 알고리즘이 있습니다:\n지도 학습(Supervised Learning): 입력 데이터와 그에 상응하는 정답 레이블이 주어지고, 알고리즘이 이를 학습하여 새로운 데이터에 대한 예측을 수행합니다. 지도 학습의 대표적인 알고리즘으로는 선형 회귀(Linear Regression), 로지스틱 회귀(Logistic Regression), 서포트 벡터 머신(SVM), 결정 트리(Decision Tree) 등이 있습니다.\n비지도 학습(Unsupervised Learning): 입력 데이터만 주어지고 정답 레이블이 없는 상태에서 패턴이나 구조를 찾는 학습 방법입니다. 비지도 학습의 대표적인 알고리즘으로는 클러스터링(Clustering), 주성분 분석(PCA), 자동 인코더(Autoencoder) 등이 있습니다.\n강화 학습(Reinforcement Learning): 에이전트가 환경과 상호 작용하며 보상을 최대화하는 행동을 학습하는 방법입니다. 강화 학습은 마르코프 결정 과정(MDP)과 Q-러닝(Q-Learning), 딥 Q-네트워크(Deep Q-Network, DQN) 등의 개념과 알고리즘을 사용합니다.\n딥러닝(Deep Learning): 머신러닝의 한 분야로, 인공 신경망(Artificial Neural Networks, ANN)을 기반으로 복잡한 패턴을 학습할 수 있는 알고리즘입니다. CNN(Convolutional Neural Networks), RNN(Recurrent Neural Networks), LSTM(Long Short-Term Memory), GAN(Generative Adversarial Networks) 등 다양한 구조와 알고리즘이 존재합니다.)\n\n-신경망과 딥러닝의 원리와 활용\n(내용)\n\n- 딥러닝을 활용한 이미지 인식, 자연어 처리 등 다양한 분야 적용 사례\n(내용)----- 글쓰기 방식:한 문단은 '\n\n'로 구분, 각 챕터별로 짜임새있는 글쓰기, 글작성이 마무리 된 후 퇴고작업으로 글 완성도 높히기 내외 사용.———— 반드시 이 형태와 요청을 기억해줘."}    ]
         #주제 입력, 프롬프트 입력, 인덱스 받기,목차수정
 
         
@@ -109,8 +111,8 @@ class contentsMaker:
             
 
 
-# index = contentsMaker.index()
-# print(index)
-# print("-------------------------------------------------------------")
-# contents = contentsMaker.contents(index)
-# print(contents)
+index = contentsMaker.index()
+print(index)
+print("-------------------------------------------------------------")
+contents = contentsMaker.contents(index)
+print(contents)
