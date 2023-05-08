@@ -136,3 +136,14 @@ LOGIN_REDIRECT_URL = "/"
 
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://<REDIS_IP_ADDRESS>:6379/0",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
+        "TIMEOUT": 60*5, # 캐시 유효시간 설정 (여기서는 5분으로 설정함)
+    }
+}
