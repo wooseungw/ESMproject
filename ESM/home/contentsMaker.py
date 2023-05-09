@@ -10,7 +10,7 @@ from django.core.cache import cache
 
 
 #openai.organization = "org-RW97zLho4qp0kezjTGL3HLRb"
-mykey = "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"
+mykey = "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"
 openai.api_key = f"{mykey}"
 
 
@@ -55,7 +55,7 @@ class contentsMaker:
         #index 생성 프롬프트 추가
         message_list.append(
             {"role": "system",
-            "content": f"어떤 글들이 입력될꺼야 이 글들을 잘 읽어보고 '목차를 출력해줘'라고 하면 목차를 출력해줘. 관련된 지식을 쉽게 습득할수 있도록 도와주는 목차를 작성해줘.-예시- 주제: 자바작동원리 목차가 될수 있는것들: 자바가 어떻게 작동하는지와 관련된 개념인 힙 메모리, 참조에 의한 호출, 모듈, 클래스,등등과 실제작동을 알 수 있는 예제, 작동원리의 장점, 작동원리의 단점, 작동 방식의 최상의 시나리오, 작동방식의 최악의 시나리오, 빈번하게 일어아는 시나리오, 등등.출력 형식: [서론]\n\n[Chapter.1]\n-소목차1\n-소목차2\n소목차3\n\n[Chapter.2]\n-소목차1\n-소목차2\n\n[Chapter.3]\n-소목차1\n-소목차2\n\n-결론.\n\n———— 다음 입력에 주제가 입력될꺼야. 알겠다면 '주제 및 내용을 입력해주세요!'라고 출력해줘."})
+            "content": f"어떤 글들이 입력될꺼야 이 글들을 잘 읽어보고 '목차를 출력해줘'라고 하면 목차를 출력해줘. 관련된 지식을 쉽게 습득할수 있도록 도와주는 목차를 작성해줘.서론,입력된 주제에 관한 이해를 돕는글, 주제를 쉽게 알 수 있는 키워드,배경지식,결론 -예시- 주제: 자바작동원리 목차가 될수 있는것들: 자바가 어떻게 작동하는지와 관련된 개념인 힙 메모리, 참조에 의한 호출, 모듈, 클래스,등등과 실제작동을 알 수 있는 예제, 작동원리의 장점, 작동원리의 단점, 작동 방식의 최상의 시나리오, 작동방식의 최악의 시나리오, 빈번하게 일어아는 시나리오, 등등.출력 형식: [서론]\n\n[Chapter.1]\n-주제에 관한 이해\n-주제에 관한 이해2\n주제에 관한 이해3\n\n[Chapter.2]\n-소목차1\n-소목차2\n\n[Chapter.3]\n-소목차1\n-소목차2\n\n-결론.\n\n———— 다음 입력에 주제가 입력될꺼야. 알겠다면 '주제 및 내용을 입력해주세요!'라고 출력해줘."})
         
         #메세지 리스트가 비어있을때 까지 출력 일단 하나만 받기
         i=0           
@@ -66,15 +66,20 @@ class contentsMaker:
             response =  contentsMaker.response(message_list)   
             i +=1     
             
-        message_list.append({"role": "user", "content": f"목차 출력형식을 활용해서 이 문서의 지식을 이해하는데 도움이 될 목차를 출력해줘 만약 다른 챕터의 목차와 겹치는 제목이 있다면 이번챕터와 관련된 목차명으로 바꾸던가 아니면 그냥 지워줘."})
+        message_list.append({"role": "user", "content": f" 이 문서에서의 키워드 5~10개를 콤마로 구분해서 출력해줘"})
+        keywords = contentsMaker.response(message_list)
+        message_list.append({"role": "assistant", "content": f"{keywords}"})
+        
+        
+            
+        message_list.append({"role": "user", "content": f"목차 출력형식을 활용해서 이 문서의 지식을 이해하는데 도움이 될 목차를 출력해줘. 키워드를 활용하면 좋을꺼같아. 만약 다른 챕터의 목차와 겹치는 제목이 있다면 이번챕터와 관련된 목차명으로 바꾸던가 아니면 그냥 지워줘."})
         response =  contentsMaker.response(message_list)        
         message_list.append({"role": "assistant", "content": f"{response}"})
         
         message_list.append({"role": "user", "content": f" 적절한 제목을 출력해줘"})
         title = contentsMaker.response(message_list)
         
-        message_list.append({"role": "user", "content": f" 이 문서에서의 키워드 5~10개를 콤마로 구분해서 출력해줘"})
-        keywords = contentsMaker.response(message_list)
+        
         contentsMaker.keywords = keywords
         contentsMaker.title = title
         #message_list.append({"role": "assistant", "content":f"{indexs}"})    
@@ -112,6 +117,9 @@ class contentsMaker:
 
 
 # index = contentsMaker.index()
+# title = contentsMaker.title
+# print(title)
+# print("-------------------------------------------------------------")
 # print(index)
 # print("-------------------------------------------------------------")
 # contents = contentsMaker.contents(index)
