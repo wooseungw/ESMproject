@@ -43,6 +43,6 @@ def convert():
                 file.write(f"\n\n\n")
             #file.write(f"---End---")
             pdf.close()
-
-    return name,ftpye
+        
+    os.remove(os.path.join(file_path, pdf_file))
 

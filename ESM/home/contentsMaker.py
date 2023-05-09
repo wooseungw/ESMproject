@@ -10,7 +10,7 @@ from django.core.cache import cache
 
 
 #openai.organization = "org-RW97zLho4qp0kezjTGL3HLRb"
-mykey = ""
+mykey = "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"
 openai.api_key = f"{mykey}"
 
 
@@ -96,7 +96,7 @@ class contentsMaker:
             
         #for index in indexs:
             
-        message_list.append({"role": "user", "content": f"{indexs}이 목차정보를 잘 설명할수 있는 글을 작성해줘 출력 예시를 참고해줘. 이미 서론을 적었다면 더이상 적지 않아도 돼. 적어도2500토큰 이상 사용해줘.모든 목차가 골고루 설명될수 있으면 좋겠어 서론과 결론은 조금 짧아도 괜찮아."})
+        message_list.append({"role": "user", "content": f"{indexs}이 목차정보를 잘 설명할수 있는 글을 작성해줘 출력 예시를 참고해줘. 이미 서론을 적었다면 더이상 적지 않아도 돼. 적어도2500토큰 이상 사용해줘.4090토큰보다 적게 사용해야해. 모든 목차가 골고루 설명될수 있으면 좋겠어 서론과 결론은 조금 짧아도 괜찮아."})
             #목차마다 정보생성
         contents =  contentsMaker.response(message_list)
             
@@ -111,8 +111,8 @@ class contentsMaker:
             
 
 
-index = contentsMaker.index()
-print(index)
-print("-------------------------------------------------------------")
-contents = contentsMaker.contents(index)
-print(contents)
+# index = contentsMaker.index()
+# print(index)
+# print("-------------------------------------------------------------")
+# contents = contentsMaker.contents(index)
+# print(contents)
