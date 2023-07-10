@@ -10,7 +10,7 @@ from django.core.cache import cache
 
 
 #openai.organization = "org-RW97zLho4qp0kezjTGL3HLRb"
-mykey = "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"
+mykey = "-"
 openai.api_key = f"{mykey}"
 
 
